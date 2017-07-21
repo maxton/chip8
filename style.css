@@ -6,3 +6,9 @@
     image-rendering:pixelated;
     border:8px solid #444;
 }
+
+body
+{
+    text-align: center;
+    font-family: sans-serif;
+}

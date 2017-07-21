@@ -95,10 +95,15 @@ class Emulator {
     render() {
         if(this.running) {
             const cycles = this.speed;
-            for(var i = 0; i < cycles; i++)
-                this.CPU.step();
-            this.CPU.updateDisplay();
-            window.requestAnimationFrame(this.render);
+            try {
+                for(var i = 0; i < cycles; i++)
+                    this.CPU.step();
+                this.CPU.updateDisplay();
+                window.requestAnimationFrame(this.render);
+            } catch (ex) {
+                console.log("Error: "+ex);
+                this.stop();
+            }
         }
     }
 

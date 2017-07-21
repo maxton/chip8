@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CHIP-8</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src='cpu.js'></script>
+        <script src='emulator.js'></script>
+    </head>
+    <body>
+    <canvas id="display" width="64" height="32"></canvas><br/>
+    Speed:
+    <input id="speed" type="range" min="1" max="100" step="1" value="10"/>
+    <script type='text/javascript'>
+        var canvas = document.getElementById("display");
+        var emulator = new Emulator(canvas);
+        var fileDropper = new FileDropper(canvas,emulator.loadROM.bind(emulator));
+        document.getElementById("speed").onchange = function(e) {
+            emulator.speed = e.target.value;
+        }
+    </script>
+    </body>
+</html>
